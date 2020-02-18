@@ -8,5 +8,7 @@ class NotesController < ApplicationController
         notes = Note.all
         render json: notes, include: [:user]
     end
+
+    
     
 end
