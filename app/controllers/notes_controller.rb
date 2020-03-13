@@ -10,7 +10,8 @@ class NotesController < ApplicationController
     end
 
     def create
-        @note = Note.new(user_id: params[user_id], title: params[:title], description: params[:description])
+        @user = User.find_by(id: params[:user_id])
+        @note = Note.new(title: params[:title], description: params[:description], user: @user)
         if @note.valid?
             @note.save
             render json: @note
